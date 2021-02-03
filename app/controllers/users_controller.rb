@@ -6,11 +6,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(name: params[:user][:name])
-    if @user.save
-      redirect_to @user
-    else
-      render :new
+    @user = User.new(user_params)
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to login_url, notice: "#{@user.name} has been created successfully" }
+      else
+        format.html { render :new }
+      end
     end
   end
 
@@ -19,5 +21,11 @@ class UsersController < ApplicationController
 
     @user = User.find(session[:user_id])
     @events = @user.events
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name)
   end
 end

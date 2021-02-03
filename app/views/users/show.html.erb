@@ -2,6 +2,10 @@
   <p><%= flash[:error] %></p>
   <br>
 <% end %>
+<% if notice %>
+  <%= notice %>
+  <br>
+<% end %>
 <h1>Welcome <%= @user.name %>!</h1>
 <ul>
   <% if @events.empty? %>
@@ -11,3 +15,4 @@
     <li><%= event.name %></li>
   <% end %>
 </ul>
+<%= button_to 'Create Event', new_event_path, method: :get %>

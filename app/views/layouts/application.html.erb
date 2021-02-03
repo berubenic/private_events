@@ -27,7 +27,7 @@
             <p class='navbar-item'><%= User.find(session[:user_id]).name %></p>
             <p class='navbar-item'><%= link_to 'Logout', logout_path, method: :delete %></p>
           <% else %>
-            <p class='navbar-item'><%= link_to 'Sign up', new_user_path %></p>
+            <p class='navbar-item'><%= link_to 'Sign up', signup_path %></p>
             <p class='navbar-item'><%= link_to 'Login', login_path %></p>
           <% end %>
         </div>

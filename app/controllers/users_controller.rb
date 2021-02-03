@@ -13,6 +13,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @users = User.all 
+    return redirect_to login_url unless signed_in?
+
+    @user = User.find(session[:user_id])
+    @events = @user.events
   end
 end

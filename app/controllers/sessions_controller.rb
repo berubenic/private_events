@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :require_logout, only: [:new]
   def new; end
 
   def create
@@ -14,5 +15,14 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_url, notice: 'Logged out'
+  end
+
+  private
+
+  def require_logout
+    return unless signed_in?
+
+    flash[:error] = 'You are already logged in'
+    redirect_to root_url
   end
 end

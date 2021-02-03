@@ -1,6 +1,13 @@
-<h1>Users</h1>
+<% if flash[:error] %>
+  <p><%= flash[:error] %></p>
+  <br>
+<% end %>
+<h1>Welcome <%= @user.name %>!</h1>
 <ul>
-  <% @users.each do |user| %>
-    <li><%= user.name %></li>
+  <% if @events.empty? %>
+    <li>You have no events</li>
+  <% end %>
+  <% @events.each do |event|%>
+    <li><%= event.name %></li>
   <% end %>
 </ul>

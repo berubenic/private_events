@@ -7,6 +7,8 @@
   <br>
 <% end %>
 <h1>Welcome <%= @user.name %>!</h1>
+<br>
+<h3>Your events</h3>
 <ul>
   <% if @events.empty? %>
     <li>You have no events</li>
@@ -15,4 +17,8 @@
     <%= link_to "#{event.name}", event %>
   <% end %>
 </ul>
+<br>
+<br>
 <%= button_to 'Create Event', new_event_path, method: :get %>
+<br>
+<%= button_to 'All Events',  events_path, method: :get %>

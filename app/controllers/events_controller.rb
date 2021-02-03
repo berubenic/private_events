@@ -10,12 +10,17 @@ class EventsController < ApplicationController
   def create
     user = User.find(session[:user_id])
     event = Event.new(event_params)
-    event.build_creator(id: user.id, name: user.name)
-
-    redirect_to root_url, notice: 'Event created successfully' if event.save
+    event.creator = user
+    if event.save
+      redirect_to root_url, notice: 'Event created successfully'
+    else
+      render :new
+    end
   end
 
-  def show; end
+  def show
+    @event = Event.find(params[:id])
+  end
 
   private
 

@@ -12,7 +12,7 @@
     <li>You have no events</li>
   <% end %>
   <% @events.each do |event|%>
-    <li><%= event.name %></li>
+    <%= link_to "#{event.name}", event %>
   <% end %>
 </ul>
 <%= button_to 'Create Event', new_event_path, method: :get %>

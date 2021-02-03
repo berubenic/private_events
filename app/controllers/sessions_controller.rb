@@ -16,13 +16,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_url, notice: 'Logged out'
   end
-
-  private
-
-  def require_logout
-    return unless signed_in?
-
-    flash[:error] = 'You are already logged in'
-    redirect_to root_url
-  end
 end

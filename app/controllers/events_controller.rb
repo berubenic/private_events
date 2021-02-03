@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
-  def index; end
+  def index
+    @events = Event.all
+  end
 
-  def new; end
+  def new
+    @event = Event.new
+  end
 
   def create; end
 

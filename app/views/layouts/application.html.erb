@@ -7,13 +7,12 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css' %>
   </head>
   <body>
     <nav class='navbar' role='navigation' aria-label='main navigation'>
       <div class='navbar-brand'>
         <%= link_to root_path, class: 'navbar-item' do %>
-          <h1 class='title is-5'>Private Events</h1>
+          <h1 class='title is-5 has-text-primary'>Private Events</h1>
         <% end %>
         <div role ='button' class='navbar-burger' data-target='navbarExample'>
           <span></span>
@@ -25,10 +24,14 @@
         <div class='navbar-end'>
           <% if session[:user_id] %>
             <p class='navbar-item'><%= User.find(session[:user_id]).name %></p>
-            <p class='navbar-item'><%= link_to 'Logout', logout_path, method: :delete %></p>
+            <p class='navbar-item is-link'><%= link_to 'Logout', logout_path, method: :delete %></p>
           <% else %>
-            <p class='navbar-item'><%= link_to 'Sign up', signup_path %></p>
-            <p class='navbar-item'><%= link_to 'Login', login_path %></p>
+            <%= link_to signup_path, class: 'navbar-item nav-hover' do %>
+              <p>Sign Up</p>
+            <% end %>
+            <%= link_to login_path, class: 'navbar-item nav-hover' do %>
+              <p>Login</p>
+            <% end %>
           <% end %>
         </div>
       </div>

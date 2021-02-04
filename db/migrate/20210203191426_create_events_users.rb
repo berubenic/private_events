@@ -1,4 +1,4 @@
-class CreateAttendees < ActiveRecord::Migration[6.1]
+class CreateEventsUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :events_users, id: false do |t|
       t.belongs_to :user

@@ -21,7 +21,8 @@ class UsersController < ApplicationController
       if signed_in? && User.find_by_id(session[:user_id])
         @user = User.find_by_id(session[:user_id])
         @hosted_events = @user.events
-        @attended_events = @user.attended_events
+        @past_events = @user.attended_events.past
+        @upcoming_events = @user.attended_events.upcoming
         format.html { @user }
       else
         format.html { redirect_to login_url }

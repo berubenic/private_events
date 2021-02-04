@@ -2,5 +2,8 @@
   <p><%= notice %></p>
   <br>
 <% end %>
+<% if flash[:error]%>
+  <p><%= flash[:error]%></p>
+<% end %>
 <h1>Login</h1>
 <%= render 'form' %>

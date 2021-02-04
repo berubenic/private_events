@@ -1,8 +1,11 @@
-<h1>All Events</h1>
+<h1>Events</h1>
+<br>
 <h3>Upcoming events:</h3>
 <ul>
-  <% @events.each do |event| %>
-    <% if event.upcoming %>
+  <% if @upcoming_events.empty? %>
+    <li>No upcoming events</li>
+  <% else %>
+    <% @upcoming_events.each do |event| %>
       <li><%= link_to "#{event.name}", event %></li>
     <% end %>
   <% end %>
@@ -11,8 +14,10 @@
 <br>
 <h3>Past events:</h3>
 <ul>
-  <% @events.each do |event| %>
-    <% if event.past %>
+  <% if @past_events.empty? %>
+    <li>No past events</li>
+  <% else %>
+    <% @past_events.each do |event| %>
       <li><%= link_to "#{event.name}", event %></li>
     <% end %>
   <% end %>

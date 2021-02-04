@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
+  before_action :require_signed_in
   def index
-    @events = Event.all
+    @past_events = Event.all.past
+    @upcoming_events = Event.all.upcoming
   end
 
   def new

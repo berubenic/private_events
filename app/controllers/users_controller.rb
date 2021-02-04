@@ -20,7 +20,8 @@ class UsersController < ApplicationController
     return redirect_to login_url unless signed_in?
 
     @user = User.find(session[:user_id])
-    @events = @user.events
+    @hosted_events = @user.events
+    @attended_events = @user.attended_events
   end
 
   private

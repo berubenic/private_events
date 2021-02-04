@@ -8,16 +8,27 @@
 <% end %>
 <h1>Welcome <%= @user.name %>!</h1>
 <br>
-<h3>Your events</h3>
+<h3>Events you are hosting:</h3>
 <ul>
-  <% if @events.empty? %>
-    <li>You have no events</li>
-  <% end %>
-  <% @events.each do |event|%>
-    <%= link_to "#{event.name}", event %>
+  <% if @hosted_events.empty? %>
+    <li>You are not hosting any events</li>
+  <% else %>
+    <% @hosted_events.each do |event|%>
+      <li><%= link_to "#{event.name}", event %></li>
+    <% end %>
   <% end %>
 </ul>
 <br>
+<h3>Events you are attending:</h3>
+<ul>
+  <% if @attended_events.empty? %>
+    <li>You are not attending any events</li>
+  <% else %>
+    <% @attended_events.each do |event| %>
+      <li><%= link_to "#{event.name}", event %></li>
+    <% end %>
+  <% end %>
+</ul>
 <br>
 <%= button_to 'Create Event', new_event_path, method: :get %>
 <br>

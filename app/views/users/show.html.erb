@@ -19,13 +19,28 @@
   <% end %>
 </ul>
 <br>
-<h3>Events you are attending:</h3>
+<h3>Upcoming events:</h3>
 <ul>
   <% if @attended_events.empty? %>
-    <li>You are not attending any events</li>
+    <li>You have no events</li>
   <% else %>
     <% @attended_events.each do |event| %>
-      <li><%= link_to "#{event.name}", event %></li>
+      <% if event.upcoming %>
+        <li><%= link_to "#{event.name}", event %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+<br>
+<h3>Past events:</h3>
+<ul>
+  <% if @attended_events.empty? %>
+    <li>You have no events</li>
+  <% else %>
+    <% @attended_events.each do |event| %>
+      <% if event.past %>
+        <li><%= link_to "#{event.name}", event %></li>
+      <% end %>
     <% end %>
   <% end %>
 </ul>

@@ -17,11 +17,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    return redirect_to login_url unless signed_in?
-
-    @user = User.find(session[:user_id])
-    @hosted_events = @user.events
-    @attended_events = @user.attended_events
+    respond_to do |format|
+      if signed_in? && User.find_by_id(session[:user_id])
+        @user = User.find_by_id(session[:user_id])
+        @hosted_events = @user.events
+        @attended_events = @user.attended_events
+        format.html { @user }
+      else
+        format.html { redirect_to login_url }
+      end
+    end
   end
 
   private

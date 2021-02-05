@@ -25,7 +25,7 @@ class UsersController < ApplicationController
         @upcoming_events = @user.attended_events.upcoming
         format.html { @user }
       else
-        format.html { redirect_to login_url }
+        format.html { redirect_to login_url, notice: 'You must be signed in' }
       end
     end
   end

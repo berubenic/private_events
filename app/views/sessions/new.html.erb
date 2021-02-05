@@ -1,9 +1,19 @@
 <% if notice %>
-  <p><%= notice %></p>
-  <br>
+  <aside class='message is-warning'>
+    <p class='message-header'>Notice</p>
+    <p class='message-body'><%= notice %></p>
+  </aside>
 <% end %>
 <% if flash[:error]%>
-  <p><%= flash[:error]%></p>
+  <aside class='message is-danger'>
+    <p class='message-header'>Error</p>
+    <p class='message-body'><%= flash[:error]%></p>
+  </aside>
 <% end %>
-<h1>Login</h1>
+<div class='level'>
+  <h2 class='title is-4 level-item is-centered'>Login</h2>
+</div>
 <%= render 'form' %>
+<div class='has-text-centered'>
+  <p>No account? <%= link_to 'Sign Up here', signup_url %></p>
+</div>

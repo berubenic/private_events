@@ -14,24 +14,11 @@
  *= require_self
  */
 
-$blue: #a1dffb;
-$dark-blue: #0044ff;
-$light-yellow: #f9de59;
-$dark-yellow: #e8a628;
-$light-red: #f98365;
-$dark-red: #c33124;
-$primary: $dark-yellow;
-$link: $primary;
-$info: $blue;
-$success: $light-yellow;
-$warning: $light-red;
-$danger: $dark-red;
-
 @import "bulma";
+.navbar-brand a.navbar-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
 
 a.navbar-item:hover {
-  background-color: #a1defb5d;
-}
-.navbar-brand a.navbar-item:hover {
-  background-color: #a1defb5d;
+  background-color: rgba(0, 0, 0, 0.05);
 }

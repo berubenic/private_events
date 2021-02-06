@@ -1,45 +1,76 @@
-<% if flash[:error] %>
-  <p><%= flash[:error] %></p>
-  <br>
+<% if flash[:alert] %>
+  <aside class='message is-warning'>
+    <p class='message-header'>Notice</p>
+    <p class='message-body'><%= flash[:alert] %></p>
+  </aside>
 <% end %>
-<% if flash[:success] %>
-  <p><%= flash[:success] %></p>
+<% if flash[:error]%>
+  <aside class='message is-danger'>
+    <p class='message-header'>Error</p>
+    <p class='message-body'><%= flash[:error]%></p>
+  </aside>
 <% end %>
-<h1>Welcome <%= @user.name %>!</h1>
-<br>
-<h3>Events you are hosting:</h3>
-<ul>
-  <% if @hosted_events.empty? %>
-    <li>You are not hosting any events</li>
-  <% else %>
-    <% @hosted_events.each do |event|%>
-      <li><%= link_to "#{event.name}", event %></li>
-    <% end %>
-  <% end %>
-</ul>
-<br>
-<h3>Upcoming events:</h3>
-<ul>
-  <% if @upcoming_events.empty? %>
-    <li>You have no events</li>
-  <% else %>
-    <% @upcoming_events.each do |event| %>
-      <li><%= link_to "#{event.name}", event %></li>
-    <% end %>
-  <% end %>
-</ul>
-<br>
-<h3>Past events:</h3>
-<ul>
-  <% if @past_events.empty? %>
-    <li>You have no past events</li>
-  <% else %>
-    <% @past_events.each do |event| %>
-      <li><%= link_to "#{event.name}", event %></li>
-    <% end %>
-  <% end %>
-</ul>
-<br>
-<%= button_to 'Create Event', new_event_path, method: :get %>
-<br>
-<%= button_to 'All Events',  events_path, method: :get %>
+<% if flash[:success]%>
+  <aside class='message is-success'>
+    <p class='message-header'>Success</p>
+    <p class='message-body'><%= flash[:success]%></p>
+  </aside>
+<% end %>
+<div class='columns is-multiline is-centered'>
+  <div class='column is-full'>
+    <h1 class='title is-4 has-text-centered'>Welcome <%= @user.name %>!</h1>
+  </div>
+  <div class='column is-one-quarter'></div>
+  <div class='column is-half has-text-centered'>
+    <div class='box'>
+      <h3 class='subtitle'>Events you are hosting:</h3>
+      <ul>
+        <% if @hosted_events.empty? %>
+          <li>You are not hosting any events</li>
+        <% else %>
+          <% @hosted_events.each do |event|%>
+            <li><%= link_to "#{event.name}", event %> <br>
+              <%= event.date.localtime.to_formatted_s(:long) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class='column is-one-quarter'></div>
+  <div class='column is-full has-text-centered'>
+    <%= button_to 'Create Event', new_event_path, method: :get, class: 'button is-medium' %>
+  </div>
+  <div class='column is-5 has-text-centered'>
+    <div class='box'>
+      <h3 class='subtitle'>Upcoming events:</h3>
+      <ul>
+        <% if @upcoming_events.empty? %>
+          <li>You have no events</li>
+        <% else %>
+          <% @upcoming_events.each do |event| %>
+            <li><%= link_to "#{event.name}", event %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class='column is-1'></div>
+  <div class='column is-5  has-text-centered'>
+    <div class='box'>
+      <h3 class='subtitle'>Past events:</h3>
+      <ul>
+        <% if @past_events.empty? %>
+          <li>You have no past events</li>
+        <% else %>
+          <% @past_events.each do |event| %>
+            <li><%= link_to "#{event.name}", event %> <br>
+              <%= event.date.localtime.to_formatted_s(:long) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class='column is-full has-text-centered'>
+    <%= button_to 'All Events',  events_path, method: :get, class: 'button is-medium' %>
+  </div>
+</div>

@@ -11,9 +11,9 @@ class EventsController < ApplicationController
 
   def create
     user = User.find(session[:user_id])
-    event = Event.new(event_params)
-    event.creator = user
-    if event.save
+    @event = Event.new(event_params)
+    @event.creator = user
+    if @event.save
       flash[:success] = 'Event created successfully'
       redirect_to root_url
     else

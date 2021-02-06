@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if signed_in? && User.find_by_id(session[:user_id])
         @user = User.find_by_id(session[:user_id])
-        @hosted_events = @user.events
+        @hosted_events = @user.events.upcoming
         @past_events = @user.attended_events.past
         @upcoming_events = @user.attended_events.upcoming
         format.html { @user }

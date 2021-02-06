@@ -1,7 +1,7 @@
-<% if notice %>
+<% if flash[:alert] %>
   <aside class='message is-warning'>
     <p class='message-header'>Notice</p>
-    <p class='message-body'><%= notice %></p>
+    <p class='message-body'><%= flash[:alert] %></p>
   </aside>
 <% end %>
 <% if flash[:error]%>

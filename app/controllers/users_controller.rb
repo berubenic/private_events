@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to login_url, notice: "#{@user.name} has been created successfully" }
+        flash[:success] = "#{@user.name} has been created successfully"
+        format.html { redirect_to login_url }
       else
         format.html { render :new }
       end
@@ -25,7 +26,8 @@ class UsersController < ApplicationController
         @upcoming_events = @user.attended_events.upcoming
         format.html { @user }
       else
-        format.html { redirect_to login_url, notice: 'You must be signed in' }
+        flash[:alert] = 'You must be signed in'
+        format.html { redirect_to login_url }
       end
     end
   end

@@ -2,9 +2,8 @@
   <p><%= flash[:error] %></p>
   <br>
 <% end %>
-<% if notice %>
-  <%= notice %>
-  <br>
+<% if flash[:success] %>
+  <p><%= flash[:success] %></p>
 <% end %>
 <h1>Welcome <%= @user.name %>!</h1>
 <br>

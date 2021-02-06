@@ -10,6 +10,12 @@
     <p class='message-body'><%= flash[:error]%></p>
   </aside>
 <% end %>
+<% if flash[:success]%>
+  <aside class='message is-success'>
+    <p class='message-header'>Success</p>
+    <p class='message-body'><%= flash[:success]%></p>
+  </aside>
+<% end %>
 <div class='level'>
   <h2 class='title is-4 level-item is-centered'>Login</h2>
 </div>

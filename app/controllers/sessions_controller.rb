@@ -6,14 +6,17 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:name])
     if user
       session[:user_id] = user.id
-      redirect_to root_url, notice: 'Logged in'
+      flash[:success] = 'Logged in'
+      redirect_to root_url
     else
-      redirect_to login_url, alert: 'Invalid name'
+      flash[:alert] = 'Invalid name'
+      redirect_to login_url
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: 'Logged out'
+    flash[:success] = 'Logged out'
+    redirect_to login_url
   end
 end

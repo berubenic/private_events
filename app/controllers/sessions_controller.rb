@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       flash[:success] = 'Logged in'
       redirect_to root_url
     else
-      flash[:error] = 'Invalid name'
-      redirect_to login_url
+      flash.now[:error] = 'Invalid name'
+      render 'new'
     end
   end
 

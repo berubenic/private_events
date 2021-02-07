@@ -37,3 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+document.addEventListener('turbolinks:load', function() {
+  setTimeout(function() {
+  document.getElementById('message').style.display = 'none'
+}, 5000);
+});
+

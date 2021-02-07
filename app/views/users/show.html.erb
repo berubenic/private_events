@@ -5,13 +5,13 @@
   </aside>
 <% end %>
 <% if flash[:error]%>
-  <aside class='message is-danger'>
+  <aside class='message is-danger' id='message'>
     <p class='message-header'>Error</p>
     <p class='message-body'><%= flash[:error]%></p>
   </aside>
 <% end %>
 <% if flash[:success]%>
-  <aside class='message is-success'>
+  <aside class='message is-success' id='message'>
     <p class='message-header'>Success</p>
     <p class='message-body'><%= flash[:success]%></p>
   </aside>
@@ -48,7 +48,10 @@
           <li>You have no events</li>
         <% else %>
           <% @upcoming_events.each do |event| %>
-            <li><%= link_to "#{event.name}", event %></li>
+            <li><%= link_to "#{event.name}", event %> <br>
+              <%= event.creator.name %> <br>
+              <%= event.date.localtime.to_formatted_s(:long) %></li>
+            <br>
           <% end %>
         <% end %>
       </ul>
@@ -64,7 +67,9 @@
         <% else %>
           <% @past_events.each do |event| %>
             <li><%= link_to "#{event.name}", event %> <br>
+              Hosted by: <%= event.creator.name %> <br>
               <%= event.date.localtime.to_formatted_s(:long) %></li>
+            <br>
           <% end %>
         <% end %>
       </ul>

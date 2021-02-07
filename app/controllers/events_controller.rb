@@ -23,6 +23,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @users = User.where.not(id: session[:user_id])
   end
 
   private

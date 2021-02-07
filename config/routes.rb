@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   match 'signup' => 'users#new', :via => :get
   resources :events, only: %i[index show new create]
 
+  controller :invitations do
+    post 'invite' => :create
+  end
+
   root 'users#show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

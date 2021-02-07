@@ -1,21 +1,3 @@
-<% if flash[:alert] %>
-  <aside class='message is-warning', id='message'>
-    <p class='message-header'>Notice</p>
-    <p class='message-body'><%= flash[:alert] %></p>
-  </aside>
-<% end %>
-<% if flash[:error]%>
-  <aside class='message is-danger' id='message'>
-    <p class='message-header'>Error</p>
-    <p class='message-body'><%= flash[:error]%></p>
-  </aside>
-<% end %>
-<% if flash[:success]%>
-  <aside class='message is-success' id='message'>
-    <p class='message-header'>Success</p>
-    <p class='message-body'><%= flash[:success]%></p>
-  </aside>
-<% end %>
 <div class='columns is-multiline is-centered'>
   <div class='column is-full'>
     <h1 class='title is-4 has-text-centered'>Welcome <%= @user.name %>!</h1>

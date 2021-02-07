@@ -1,3 +1,2 @@
-class InviationsController < ApplicationController
-  def create; end
+class InvitationsController < ApplicationController
 end

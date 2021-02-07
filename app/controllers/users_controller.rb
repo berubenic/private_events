@@ -32,6 +32,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def send_invitation
+    user = User.find(params[:user])
+    event = Event.find(params[:event])
+    begin
+      user.pending_events << event
+    rescue StandardError
+      flash[:error] = 'Can not send invitation to this user'
+      redirect_to event
+    else
+      flash[:success] = 'Invite sent sucessfully'
+      redirect_to event
+    end
+  end
+
   private
 
   def user_params

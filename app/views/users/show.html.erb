@@ -61,3 +61,8 @@
     <%= button_to 'All Events',  events_path, method: :get, class: 'button is-medium' %>
   </div>
 </div>
+<ul>
+  <% @user.pending_events.each do |event|%>
+    <li><%= event.name %></li>
+  <% end %>
+</ul>

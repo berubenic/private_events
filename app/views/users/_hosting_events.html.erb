@@ -5,8 +5,12 @@
       <li>You are not hosting any events</li>
     <% else %>
       <% @hosted_events.each do |event|%>
-        <li><%= link_to "#{event.name}", event %> <br>
-          <%= event.date.localtime.to_formatted_s(:long) %></li>
+        <li>
+          <div class='level'>
+            <%= link_to "#{event.name}", event, class: 'level-item' %>
+            <p class='level-item'><%= event.date.localtime.to_formatted_s(:long) %></p>
+          </div>
+        </li>
       <% end %>
     <% end %>
   </ul>

@@ -6,11 +6,10 @@
     <% else %>
       <% @user.pending_events.each do |event|%>
         <li>
-          <div class='level'><%= link_to "#{event.name}", event, class: 'level-item' %>
-            <p class='level-item'> Hosted by: <%= event.creator.name %></p>
-            <p class='level-item'><%= event.date.localtime.to_formatted_s(:long) %></p>
-            <%= button_to 'Accept', accept_invite_path, params: { user: @user.id, event: event.id }, class: 'level-item mx-1' %>
-            <%= button_to 'Decline', decline_invite_path, params: { user: @user.id, event: event.id }, class:'level-item mx-1' %></div>
+          <div class='level'>
+            <%= render 'events/short_display', event: event %>
+            <%= button_to 'Accept', accept_invite_path, params: { user: @user.id, event: event.id }, class: 'button is-small level-item mx-1 is-success' %>
+            <%= button_to 'Decline', decline_invite_path, params: { user: @user.id, event: event.id }, class:'button is-small level-item mx-1 is-danger' %></div>
         </li>
       <% end %>
     <% end %>

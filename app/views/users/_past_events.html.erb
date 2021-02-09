@@ -5,9 +5,11 @@
       <li>You have no past events</li>
     <% else %>
       <% @past_events.each do |event| %>
-        <li><%= link_to "#{event.name}", event %> <br>
-          Hosted by: <%= event.creator.name %> <br>
-          <%= event.date.localtime.to_formatted_s(:long) %></li>
+        <li>
+          <div class='level'>
+            <%= render 'events/short_display', event: event %>
+          </div>
+        </li>
         <br>
       <% end %>
     <% end %>

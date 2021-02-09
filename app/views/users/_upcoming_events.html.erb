@@ -5,10 +5,11 @@
       <li>You have no events</li>
     <% else %>
       <% @upcoming_events.each do |event| %>
-        <li><%= link_to "#{event.name}", event %> <br>
-          <%= event.creator.name %> <br>
-          <%= event.date.localtime.to_formatted_s(:long) %></li>
-        <br>
+        <li>
+          <div class='level'>
+            <%= render 'events/short_display', event: event %>
+          </div>
+        </li>
       <% end %>
     <% end %>
   </ul>

@@ -1,0 +1,3 @@
+<%= link_to "#{event.name}", event, class: 'level-item' %>
+<p class='level-item'> Hosted by: <%= event.creator.name %></p>
+<p class='level-item'><%= event.date.localtime.to_formatted_s(:long) %></p>

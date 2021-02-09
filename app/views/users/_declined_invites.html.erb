@@ -5,9 +5,11 @@
       <li>You have no declined invites</li>
     <% else %>
       <% @user.declined_events.each do |event|%>
-        <li><%= link_to "#{event.name}", event %> <br>
-          Hosted by: <%= event.creator.name %> <br>
-          <%= event.date.localtime.to_formatted_s(:long) %></li>
+        <li>
+          <div class='level'>
+            <%= render 'events/short_display', event: event %>
+          </div>
+        </li>
       <% end %>
     <% end %>
   </ul>

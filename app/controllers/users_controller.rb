@@ -60,6 +60,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def decline_invitation
+    user = User.find(params[:user])
+    user = User.find(params[:user])
+    event = Event.find(params[:event])
+    invite = Invitation.find_by(user_id: user.id, event_id: event.id)
+    invite.status = 2
+    if invite.save
+      flash[:success] = 'Invite declined'
+      redirect_to root_url
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to root_url
+    end
+  end
+
   private
 
   def user_params

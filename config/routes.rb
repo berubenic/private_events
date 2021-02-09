@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   match 'send_invite' => 'users#send_invitation', :via => :post
   match 'accept_invite' => 'users#accept_invitation', :via => :post
+  match 'decline_invite' => 'users#decline_invitation', :via => :post
 
   root 'users#show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

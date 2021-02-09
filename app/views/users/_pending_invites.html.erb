@@ -5,10 +5,13 @@
       <li>You have no pending invites</li>
     <% else %>
       <% @user.pending_events.each do |event|%>
-        <li><%= link_to "#{event.name}", event %> <br>
-          Hosted by: <%= event.creator.name %> <br>
-          <%= event.date.localtime.to_formatted_s(:long) %><%= button_to 'Accept', accept_invite_path, params: { user: @user.id, event: event.id } %>
-          <%= button_to 'Decline', decline_invite_path, params: { user: @user.id, event: event.id } %></li>
+        <li>
+          <div class='level'><%= link_to "#{event.name}", event, class: 'level-item' %>
+            <p class='level-item'> Hosted by: <%= event.creator.name %></p>
+            <p class='level-item'><%= event.date.localtime.to_formatted_s(:long) %></p>
+            <%= button_to 'Accept', accept_invite_path, params: { user: @user.id, event: event.id }, class: 'level-item mx-1' %>
+            <%= button_to 'Decline', decline_invite_path, params: { user: @user.id, event: event.id }, class:'level-item mx-1' %></div>
+        </li>
       <% end %>
     <% end %>
   </ul>

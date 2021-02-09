@@ -1,0 +1,15 @@
+<div class='box'>
+  <h3 class='subtitle'>Past events:</h3>
+  <ul>
+    <% if @past_events.empty? %>
+      <li>You have no past events</li>
+    <% else %>
+      <% @past_events.each do |event| %>
+        <li><%= link_to "#{event.name}", event %> <br>
+          Hosted by: <%= event.creator.name %> <br>
+          <%= event.date.localtime.to_formatted_s(:long) %></li>
+        <br>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,15 @@
+<div class='box'>
+  <h3 class='subtitle'>Upcoming events:</h3>
+  <ul>
+    <% if @upcoming_events.empty? %>
+      <li>You have no events</li>
+    <% else %>
+      <% @upcoming_events.each do |event| %>
+        <li><%= link_to "#{event.name}", event %> <br>
+          <%= event.creator.name %> <br>
+          <%= event.date.localtime.to_formatted_s(:long) %></li>
+        <br>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

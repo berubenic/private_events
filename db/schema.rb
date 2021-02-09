@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_07_180035) do
+ActiveRecord::Schema.define(version: 2021_02_09_004855) do
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_02_07_180035) do
     t.integer "creator_id"
   end
 
-  create_table "invitations", id: false, force: :cascade do |t|
+  create_table "invitations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "event_id"
     t.integer "status", default: 0, null: false

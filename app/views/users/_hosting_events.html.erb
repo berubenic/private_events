@@ -1,0 +1,13 @@
+<div class='box'>
+  <h3 class='subtitle'>Events you are hosting:</h3>
+  <ul>
+    <% if @hosted_events.empty? %>
+      <li>You are not hosting any events</li>
+    <% else %>
+      <% @hosted_events.each do |event|%>
+        <li><%= link_to "#{event.name}", event %> <br>
+          <%= event.date.localtime.to_formatted_s(:long) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

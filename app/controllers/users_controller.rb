@@ -46,6 +46,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def accept_invitation
+    user = User.find(params[:user])
+    event = Event.find(params[:event])
+    invite = Invitation.find_by(user_id: user.id, event_id: event.id)
+    invite.status = 1
+    if invite.save
+      flash[:success] = 'Invite accepted'
+      redirect_to root_url
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to root_url
+    end
+  end
+
   private
 
   def user_params

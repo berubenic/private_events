@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'sessions/create'
   get 'sessions/destroy'
-  resources :users, only: %i[create]
+  resources :users, only: %i[create show]
   match 'signup' => 'users#new', :via => :get
   resources :events, only: %i[index show new create]
 
@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   match 'accept_invite' => 'users#accept_invitation', :via => :post
   match 'decline_invite' => 'users#decline_invitation', :via => :post
 
-  root 'users#show'
+  root 'events#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

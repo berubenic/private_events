@@ -7,8 +7,9 @@
       <% @hosted_events.each do |event|%>
         <li>
           <div class='level'>
-            <%= link_to "#{event.name}", event, class: 'level-item' %>
+            <p><%= link_to "#{event.name}", event, class: 'level-item' %></p>
             <p class='level-item'><%= event.date.localtime.to_formatted_s(:long) %></p>
+            <br>
           </div>
         </li>
       <% end %>

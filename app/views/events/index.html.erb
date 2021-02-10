@@ -1,24 +1,4 @@
-<h1>Events</h1>
+<h1 class='title is-4 has-text-centered'>Events</h1>
+<%= render 'users/upcoming_events' %>
 <br>
-<h3>Upcoming events:</h3>
-<ul>
-  <% if @upcoming_events.empty? %>
-    <li>No upcoming events</li>
-  <% else %>
-    <% @upcoming_events.each do |event| %>
-      <li><%= link_to "#{event.name}", event %></li>
-    <% end %>
-  <% end %>
-</ul>
-<br>
-<br>
-<h3>Past events:</h3>
-<ul>
-  <% if @past_events.empty? %>
-    <li>No past events</li>
-  <% else %>
-    <% @past_events.each do |event| %>
-      <li><%= link_to "#{event.name}", event %></li>
-    <% end %>
-  <% end %>
-</ul>
+<%= render 'users/past_events' %>

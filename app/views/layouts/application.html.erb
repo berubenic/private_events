@@ -22,8 +22,8 @@
       </div>
       <div id='navbarExample' class='navbar-menu'>
         <div class='navbar-end'>
-          <% if session[:user_id] %>
-            <p class='navbar-item'><%= User.find(session[:user_id]).name %></p>
+          <% if signed_in? %>
+            <p class='navbar-item'><%= signed_in_user_path %></p>
             <p class='navbar-item is-link'><%= link_to 'Logout', logout_path, method: :delete %></p>
           <% else %>
             <%= link_to signup_path, class: 'navbar-item' do %>

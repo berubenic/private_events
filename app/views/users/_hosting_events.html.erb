@@ -4,15 +4,20 @@
     <% if @hosted_events.empty? %>
       <li>You are not hosting any events</li>
     <% else %>
-      <% @hosted_events.each do |event|%>
-        <li>
-          <div class='level'>
-            <p><%= link_to "#{event.name}", event, class: 'level-item' %></p>
-            <p class='level-item'><%= event.date.localtime.to_formatted_s(:long) %></p>
-            <br>
-          </div>
-        </li>
-      <% end %>
+      <table class='table is-fullwidth'>
+        <thead>
+          <th>Event name</th>
+          <th>Date</th>
+        </thead>
+        <tbody >
+          <% @hosted_events.each do |event|%>
+            <tr>
+              <td><%= link_to "#{event.name}", event %></td>
+              <td><%= event.date.localtime.to_formatted_s(:long) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
   </ul>
 </div>

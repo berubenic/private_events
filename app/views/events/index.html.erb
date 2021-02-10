@@ -1,4 +1,13 @@
 <h1 class='title is-4 has-text-centered'>Events</h1>
-<%= render 'users/upcoming_events' %>
-<br>
-<%= render 'users/past_events' %>
+<div class='columns is-multiline is-centered'>
+  <div class='column is-1'></div>
+  <div class='column is-10 has-text-centered'>
+    <%= render 'users/upcoming_events' %>
+  </div>
+  <div class='column is-1'></div>
+  <div class='column is-1'></div>
+  <div class='column is-10 has-text-centered'>
+    <%= render 'users/past_events' %>
+  </div>
+  <div class='column is-1'></div>
+</div>

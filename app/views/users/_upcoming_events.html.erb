@@ -1,23 +1,21 @@
 <div class='box'>
   <h3 class='subtitle'>Upcoming events:</h3>
-  <ul>
-    <% if @upcoming_events.empty? %>
-      <li>You have no events</li>
-    <% else %>
-      <table class='table is-fullwidth'>
-        <thead>
-          <th>Event name</th>
-          <th>Host</th>
-          <th>Date</th>
-        </thead>
-        <tbody >
+  <% if @upcoming_events.empty? %>
+    <p>You have no events</p>
+  <% else %>
+    <table class='table is-fullwidth'>
+      <thead>
+        <th>Event name</th>
+        <th>Host</th>
+        <th>Date</th>
+      </thead>
+      <tbody >
+        <% @upcoming_events.each do |event| %>
           <tr>
-            <% @upcoming_events.each do |event| %>
-              <%= render 'events/short_tb_display', event: event %>
-            <% end %>
+            <%= render 'events/short_tb_display', event: event %>
           </tr>
-        </tbody>
-      </table>
-    <% end %>
-  </ul>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>

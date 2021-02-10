@@ -1,23 +1,21 @@
 <div class='box'>
   <h3 class='subtitle'>Past events:</h3>
-  <ul>
-    <% if @past_events.empty? %>
-      <li>You have no past events</li>
-    <% else %>
-      <table class='table is-fullwidth'>
-        <thead>
-          <th>Event name</th>
-          <th>Host</th>
-          <th>Date</th>
-        </thead>
-        <tbody >
+  <% if @past_events.empty? %>
+    <p>You have no past events</p>
+  <% else %>
+    <table class='table is-fullwidth'>
+      <thead>
+        <th>Event name</th>
+        <th>Host</th>
+        <th>Date</th>
+      </thead>
+      <tbody >
+        <% @past_events.each do |event| %>
           <tr>
-            <% @past_events.each do |event| %>
-              <%= render 'events/short_tb_display', event: event %>
-            <% end %>
+            <%= render 'events/short_tb_display', event: event %>
           </tr>
-        </tbody>
-      </table>
-    <% end %>
-  </ul>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>

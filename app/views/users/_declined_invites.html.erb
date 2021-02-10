@@ -1,23 +1,21 @@
 <div class='box'>
   <h3 class='subtitle'>Declined invites</h3>
-  <ul>
-    <% if @user.declined_events.empty? %>
-      <li>You have no declined invites</li>
-    <% else %>
-      <table class='table is-fullwidth'>
-        <thead>
-          <th>Event name</th>
-          <th>Host</th>
-          <th>Date</th>
-        </thead>
-        <tbody >
+  <% if @user.declined_events.empty? %>
+    <p>You have no declined invites</p>
+  <% else %>
+    <table class='table is-fullwidth'>
+      <thead>
+        <th>Event name</th>
+        <th>Host</th>
+        <th>Date</th>
+      </thead>
+      <tbody >
+        <% @user.declined_events.each do |event|%>
           <tr>
-            <% @user.declined_events.each do |event|%>
-              <%= render 'events/short_tb_display', event: event %>
-            <% end %>
+            <%= render 'events/short_tb_display', event: event %>
           </tr>
-        </tbody>
-      </table>
-    <% end %>
-  </ul>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>

@@ -4,14 +4,24 @@
     <% if @user.pending_events.empty? %>
       <li>You have no pending invites</li>
     <% else %>
-      <% @user.pending_events.each do |event|%>
-        <li>
-          <div class='level'>
-            <%= render 'events/short_display', event: event %>
-            <%= button_to 'Accept', accept_invite_path, params: { user: @user.id, event: event.id }, class: 'button is-small level-item mx-1 is-success' %>
-            <%= button_to 'Decline', decline_invite_path, params: { user: @user.id, event: event.id }, class:'button is-small level-item mx-1 is-danger' %></div>
-        </li>
-      <% end %>
+      <table class='table is-fullwidth'>
+        <thead>
+          <th>Event name</th>
+          <th>Host</th>
+          <th>Date</th>
+          <th>Accept</th>
+          <th>Decline</th>
+        </thead>
+        <tbody >
+          <tr>
+            <% @user.pending_events.each do |event|%>
+              <%= render 'events/short_tb_display', event: event %>
+              <td><%= button_to 'Accept', accept_invite_path, params: { user: @user.id, event: event.id }, class: 'button is-small level-item mx-1 is-success' %></td>
+              <td><%= button_to 'Decline', decline_invite_path, params: { user: @user.id, event: event.id }, class:'button is-small level-item mx-1 is-danger' %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
     <% end %>
   </ul>
 </div>

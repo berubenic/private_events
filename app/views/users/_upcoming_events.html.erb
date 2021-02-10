@@ -4,13 +4,20 @@
     <% if @upcoming_events.empty? %>
       <li>You have no events</li>
     <% else %>
-      <% @upcoming_events.each do |event| %>
-        <li>
-          <div class='level'>
-            <%= render 'events/short_display', event: event %>
-          </div>
-        </li>
-      <% end %>
+      <table class='table is-fullwidth'>
+        <thead>
+          <th>Event name</th>
+          <th>Host</th>
+          <th>Date</th>
+        </thead>
+        <tbody >
+          <tr>
+            <% @upcoming_events.each do |event| %>
+              <%= render 'events/short_tb_display', event: event %>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
     <% end %>
   </ul>
 </div>

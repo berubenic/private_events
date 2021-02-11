@@ -84,5 +84,8 @@
         </table>
       <% end %>
     </div>
+    <div class='container has-text-centered'>
+      <%= button_to 'Delete Event',  @event, method: :delete, data: {confirm: 'Are you sure?'} %>
+    </div>
   <% end %>
 </div>

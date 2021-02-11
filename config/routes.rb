@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
   resources :users, only: %i[create show]
   match 'signup' => 'users#new', :via => :get
-  resources :events, only: %i[index show new create]
+  resources :events, only: %i[index show new create destroy]
 
   match 'send_invite' => 'users#send_invitation', :via => :post
   match 'accept_invite' => 'users#accept_invitation', :via => :post

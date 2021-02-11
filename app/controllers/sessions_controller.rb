@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:success] = 'Logged in'
-      redirect_to root_url
+      redirect_to user_url(user.id)
     else
       flash.now[:error] = 'Invalid name'
       render 'new'

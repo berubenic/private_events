@@ -26,6 +26,17 @@ class EventsController < ApplicationController
     @users = User.where.not(id: session[:user_id])
   end
 
+  def destroy
+    event = Event.find(params[:id])
+    if event.destroy!
+      flash[:success] = 'Event successfully deleted'
+      redirect_to root_url
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to event_url(event.id)
+    end
+  end
+
   private
 
   def event_params

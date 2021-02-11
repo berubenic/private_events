@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_02_09_004855) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", null: false
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 2021_02_09_004855) do
   end
 
   create_table "invitations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
+    t.bigint "user_id"
+    t.bigint "event_id"
     t.integer "status", default: 0, null: false
     t.index ["event_id"], name: "index_invitations_on_event_id"
     t.index ["user_id"], name: "index_invitations_on_user_id"

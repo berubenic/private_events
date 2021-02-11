@@ -29,6 +29,8 @@
       <h3 class='subtitle'>Send Invitations:</h3>
       <% if users_available_to_invite.empty? %>
         <p>No one is available</p>
+      <% elsif @event.date < DateTime.now %>
+        <p>Can not send invites</p>
       <% else %>
         <table class='table center'>
           <thead>
@@ -83,9 +85,11 @@
           </tbody>
         </table>
       <% end %>
+      <br>
+      <br>
     </div>
     <div class='container has-text-centered'>
-      <%= button_to 'Delete Event',  @event, method: :delete, data: {confirm: 'Are you sure?'} %>
+      <%= button_to 'Delete Event',  @event, method: :delete, data: {confirm: 'Are you sure?'}, class: 'button is-small is-danger' %>
     </div>
   <% end %>
 </div>
